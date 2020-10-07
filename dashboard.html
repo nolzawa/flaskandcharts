@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href= {{url_for('static', filename='ramen.css')}}>
+        <title>DSC Smart Trolley</title>
+    </head>
+
+    <body>
+
+        <div class="header-box">
+            <div class="headerlogo">
+                <img src={{url_for('static', filename="DCSlogo.png")}}>
+                <div class="header-text">DCS Smart Trolley</div>
+                <div class="logoutheader"><a href="#">Logout</a></div>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="sidebar">
+                <div class="profile-pic">
+                    <img src={{url_for('static', filename="blankprofile.png")}}>
+                    <p>sabina001@suss.edu.sg</p>
+                </div>
+                <ul><a href="#">Dashboard View</a></ul>
+                <ul><a href="#">Account</a></ul>
+                <ul><a href="#">Configure Email</a></ul>
+                <ul><a href="#">Download</a></ul>
+                <ul><a href="#">Logout</a></ul>
+            </div>
+
+            <div class="contentbox">
+                <div class ="summarybox">
+                    <div class="active-trolley">
+                        <div class="trolley-title">
+                            Active Trolleys
+                        </div>
+
+                        <div class="number-trolley">
+                            {{ cactive }}
+                        </div>
+                        <div class="trolley-footer">
+                            Total: {{ total }}
+                        </div>
+                    </div>
+                
+
+                    <div class="trolleyTemp">
+                        <div class="date">
+                            Tuesday, August 11 2020
+                        </div>
+                            
+                        <div class="tempheader">
+                            Highest Temperature
+                            <div class="resultheader">
+                                {% for trolley in highestTemp %}
+                                    {{trolley.temp}} ({{trolley.name}})
+                                {% endfor %}
+                                </div>
+                        </div>
+                        
+                        <br>
+                        <div class="tempheader">
+                            Lowest Temperature
+                            <div class="resultheader">
+                                {% for trolley in lowestTemp %}
+                                    {{trolley.temp}} ({{trolley.name}})
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="graphbox" style="width: 100%;height: 50vh;">
+                    <h4>Temperature Recording</h4>
+                    <p style="font-size: 12px;">Today's Recording</p>
+                    <canvas id="trolleychart"></canvas>
+                </div>
+            </div>
+        
+        </div>
+        <script>
+            Chart.defaults.global.legend.labels.usePointStyle = true;
+            Chart.defaults.global.title.align = 'start';
+        
+            var trolleychart = document.getElementById("trolleychart").getContext('2d');
+
+            var LABELDATA = [
+                {% for xdate in xlabels %}
+                    {{xdate.date}},
+                {% endfor %}]
+
+            var CHARTDATA = [
+                {% for xdate in xlabels %}
+                    {{xdate.temp}},
+                {% endfor %}]
+        
+            var tempChart = new Chart(trolleychart, {
+                type:'line',
+                data: {
+                    labels: LABELDATA, 
+                    datasets: [{
+                        data: CHARTDATA
+                    }
+                    ]
+                },
+        
+                options: {
+                    title: {
+                        display:false,
+                        text: ['Temperature Recording', "Today's Recording"],
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display:true,
+                        align: 'start',
+                        
+                    },
+                    scales: {
+                        
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                padding: 15,
+                            }
+                        }]
+                    }
+                }
+            });
+            
+            
+        </script>
+
+    </body>
+</html>
+
