@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+
+    <body>
+        <h1>Recordings</h1>
+        <hr>
+        
+        <table border ="1">
+            <tr>
+                <th>Name</th>
+                <th>Date Time</th>
+                <th>Temperature</th>    
+        </tr>
+        {% for trolley in dlist %}
+        <tr>
+            
+            <td>{{trolley.name}}</td>
+
+            <td>{{trolley.date}}</td>
+
+            <td>{{trolley.temp}}</td>
+            
+        </tr>
+        {% endfor %}
+        </table>
+        
+
+
+    
+
+
+
+    </body>
+</html>

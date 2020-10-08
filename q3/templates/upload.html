@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Upload Recording</h1>
+        <form action="/upload" enctype="multipart/form-data" method="POST">
+            <input type ="file" name="csvfile">
+            <input type="submit" name="" value="Upload">
+        </form>
+        
+        { % for i in dataupload %}
+            {{i}}
+        {% endfor %}
+
+
+    </body>
+</html>

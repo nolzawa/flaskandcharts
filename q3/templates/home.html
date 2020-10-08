@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/ramen.css">
+        <title>DSC Smart Trolley</title>
+    </head>
+
+    <body>
+
+        <div class="header-box">
+            <div class="headerlogo">
+                <img src="img/DCSlogo.png">
+                <div class="header-text">DCS Smart Trolley</div>
+                <div class="logoutheader"><a href="#">Logout</a></div>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="sidebar">
+                <div class="profile-pic">
+                    <img src="img/blankprofile.png">
+                    <p>sabina001@suss.edu.sg</p>
+                </div>
+                <ul><a href="#">Dashboard View</a></ul>
+                <ul><a href="#">Account</a></ul>
+                <ul><a href="#">Configure Email</a></ul>
+                <ul><a href="#">Download</a></ul>
+                <ul><a href="#">Logout</a></ul>
+            </div>
+
+            <div class="contentbox">
+                <div class ="summarybox">
+                    <div class="active-trolley">
+                        <div class="trolley-title">
+                            Active Trolleys
+                        </div>
+
+                        <div class="number-trolley">
+                            2
+                        </div>
+                        <div class="trolley-footer">
+                            Total: 6
+                        </div>
+                    </div>
+                
+
+                    <div class="trolleyTemp">
+                        <div class="date">
+                            Tuesday, August 11 2020
+                        </div>
+
+                        <div class="tempheader">
+                            Highest Temperature
+                            <div class="resultheader">
+                                30.0 (trolley1)
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div class="tempheader">
+                            Lowest Temperature
+                            <div class="resultheader">
+                                11.0 (trolley1)
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="graphbox" style="width: 100%;height: 50vh;">
+                    <h4>Temperature Recording</h4>
+                    <p style="font-size: 12px;">Today's Recording</p>
+                    <canvas id="trolleychart"></canvas>
+                </div>
+            </div>
+
+        
+        </div>
+
+    </body>
+</html>
+
+<script>
+    Chart.defaults.global.legend.labels.usePointStyle = true;
+    Chart.defaults.global.title.align = 'start';
+
+    var trolleychart = document.getElementById("trolleychart").getContext('2d');
+
+    var tempChart = new Chart(trolleychart, {
+        type:'line',
+        data: {
+            labels: ['Tue 11', '3am', '6am', '9am', '12pm', '3pm', '6pm', '9pm','Wed 12'],
+            datasets: [{
+                label: 'trolley 1',
+                fill: false,
+                data: [11, 30, 29, 15, 20, 25, 27, 14, 12],
+                borderColor: 'black',
+                backgroundColor: 'black'
+            },
+            {
+                label: 'trolley 2',
+                fill: false,
+                lineTension: 0,
+                data: [12, 18, 19, 29, 22, 21, 27, 14, 20],
+                borderColor: 'red',
+                backgroundColor: 'red'
+            }
+            ]
+        },
+
+        options: {
+            title: {
+                display:false,
+                text: ['Temperature Recording', "Today's Recording"],
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                display:true,
+                align: 'start',
+                
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        padding: 15,
+                    }
+                }]
+            }
+        }
+    });
+    
+    
+</script>
