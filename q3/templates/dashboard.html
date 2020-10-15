@@ -48,7 +48,7 @@
 
                     <div class="trolleyTemp">
                         <div class="date">
-                            <script>document.write(new Date().toDateString())</script>
+                            Tuesday, August 11 2020
                         </div>
                             
                         <div class="tempheader">
@@ -69,10 +69,11 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        
                     </div>
 
                 </div>
-                
+
                 <div class="graphbox" style="width: 100%;height: 50vh;">
                     <h4>Temperature Recording</h4>
                     <p style="font-size: 12px;">Today's Recording</p>
@@ -88,13 +89,13 @@
             var trolleychart = document.getElementById("trolleychart").getContext('2d');
             
             var LABELDATA = [
-                {% for x in xlabel %}
-                    '{{x.date.strftime('%H:%M%p')}}',
+                {% for xdate in xlabels %}
+                    {{xdate.date}}
                 {% endfor %}]
 
             var CHARTDATA = [
-                {% for tt in xlabel %}
-                    {{tt.temp}},
+                {% for xdate in xlabels %}
+                    {{xdate.temp}}
                 {% endfor %}
                 ]
         
@@ -103,13 +104,6 @@
                 data: {
                     labels: LABELDATA, 
                     datasets: [{
-                        label: "Trolley 1",
-                        
-                        data: CHARTDATA
-                    },
-                    {
-                        label: "Trolley 2",
-                        
                         data: CHARTDATA
                     }
                     ]
@@ -144,3 +138,4 @@
         
     </body>
 </html>
+

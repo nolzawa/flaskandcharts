@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Verdana, Tahoma, sans-serif;
+    overflow: hidden;
+}
+
+.wrap {
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.header-box {
+    width: 100vw;
+    height: 30px;
+    display: flex;
+    background: silver;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.header-box .headerlogo img {
+    width: 30px;
+    height: 30px;
+    float: left;
+    border-radius: 50%;
+}
+
+.header-box .headerlogo .header-text {
+    font-weight: bold;
+    display: inline-block;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.header-box .headerlogo .logoutheader {
+    float: right;
+    color: lightgrey;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+.header-box .headerlogo .logoutheader a {
+    color: grey;
+}
+
+.sidebar {
+    float: left;
+    width: 185px;
+    height: 100vh;
+    background: lightgrey;
+    position: relative;
+    padding: 0px;
+}
+
+.sidebar .profile-pic {
+    color: black;
+    text-align: center;
+    font-size: x-small;
+    margin-top: 10px;
+}
+
+.sidebar .profile-pic img {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    border-radius: 50%;
+}
+
+.sidebar ul {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.sidebar a {
+    color: black;
+    display: block;
+    text-decoration: none;
+    padding: 13px;
+    font-size: smaller;
+}
+
+.sidebar a:hover {
+    color: white;
+    background: gray;
+}
+
+.contentbox {
+    width: 80%;
+    height: 90vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.summarybox {
+    width: 80%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-evenly;
+}
+
+.summarybox .active-trolley {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 120px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.summarybox .active-trolley .trolley-title {
+    font-size: small;
+    padding: 8px;
+}
+
+.summarybox .active-trolley .number-trolley {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.summarybox .active-trolley .trolley-footer {
+    font-size: small;
+    text-align: right;
+    padding: 5px;
+}
+
+.graphbox {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    position: relative;
+}
+
+.summarybox .trolleyTemp {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    height: 120px;
+    box-shadow: 1px 1px 1px 1px lightgray;
+}
+
+.summarybox .trolleyTemp .date {
+    font-size: x-small;
+    color: silver;
+    text-align: right;
+    padding: 5px;
+}
+
+.summarybox .trolleyTemp .tempheader {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.summarybox .trolleyTemp .tempheader .resultheader {
+    font-size: x-small;
+    color: lightgrey;
+}

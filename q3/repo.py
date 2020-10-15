@@ -38,7 +38,8 @@ def f_date(objDate=None):
             '$lt':end,
             '$gte':start
         }
-    return db.trolley.find(filter)
+    return list(db.trolley.find(filter))
+    
 
 def count_active(objDate=None):
     filter = {}
@@ -63,17 +64,18 @@ def create_trolley(name, date, temp):
     assert date is not None
     assert temp is not None
 
-    DateObj = datetime.strptime(date, "%Y-%m-%d")
+    db.trolley.insert_one({'name':name, 'date': date, 'temp': temp})
 
-    db.trolley.insert_one({'name':name, 'date': DateObj, 'temp': temp})
-
-def update_trolley(name, new_date):
+def update_trolley(name, new_temp):
     assert name is not None
-    assert new_date is not None
+    assert new_temp is not None
 
-    db.trolley.update_one({'name':name}, {'$set':{'date':new_date}})
+    db.trolley.update_one({'name':name}, {'$set':{'temp':new_temp}})
 
 def delete_trolley(name):
     assert name is not None
-
     db.trolley.delete_one({'name':name})
+
+def all_trolley():
+    return list(db.trolley.find({}))
+
