@@ -10,7 +10,7 @@ db = connection['TMA']
 def get_high(objDate=None):
     filter = {}
     if objDate is not None:
-        start=datetime(objDate.year, objDate.nmonth, objDate.day) #get the start of the date
+        start=datetime(objDate.year, objDate.month, objDate.day) #get the start of the date
         end=start+timedelta(days=1) # this get the ending
         filter['date'] = { #this filters only the time between start and end date will appear
             '$lt':end,
@@ -21,7 +21,7 @@ def get_high(objDate=None):
 def get_low(objDate=None):
     filter = {}
     if objDate is not None:
-        start=datetime(objDate.year, objDate.nmonth, objDate.day) #get the start of the date
+        start=datetime(objDate.year, objDate.month, objDate.day) #get the start of the date
         end=start+timedelta(days=1) # this get the ending
         filter['date'] = { #this filters only the time between start and end date will appear
             '$lt':end,
@@ -32,7 +32,7 @@ def get_low(objDate=None):
 def f_date(objDate=None):
     filter = {}
     if objDate is not None:
-        start=datetime(objDate.year, objDate.nmonth, objDate.day) #get the start of the date
+        start=datetime(objDate.year, objDate.month, objDate.day) #get the start of the date
         end=start+timedelta(days=1) # this get the ending
         filter['date'] = { #this filters only the time between start and end date will appear
             '$lt':end,
@@ -44,7 +44,7 @@ def f_date(objDate=None):
 def count_active(objDate=None):
     filter = {}
     if objDate is not None:
-        start=datetime(objDate.year, objDate.nmonth, objDate.day) #get the start of the date
+        start=datetime(objDate.year, objDate.month, objDate.day) #get the start of the date
         end=start+timedelta(days=1) # this get the ending
         filter['date'] = { #this filters only the time between start and end date will appear
             '$lt':end,
