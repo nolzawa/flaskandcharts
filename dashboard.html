@@ -79,7 +79,6 @@
                     <canvas id="trolleychart"></canvas>
                 </div>
             </div>
-        
         </div>
         <script>
             Chart.defaults.global.legend.labels.usePointStyle = true;
@@ -92,11 +91,19 @@
                     '{{x.date.strftime('%H:%M%p')}}',
                 {% endfor %}]
 
-            var CHARTDATA = [
-                {% for tt in xlabel %}
-                    {{tt.temp}},
-                {% endfor %}
-                ]
+            var chart1 = [
+                            {% for i in t1 %}
+                                    {{i}},
+                                {% endfor %}
+
+            ]
+
+            var chart2 = [
+                            {% for i in t2 %}
+                                    {{i}},
+                                {% endfor %}
+            ]
+
         
             var tempChart = new Chart(trolleychart, {
                 type:'line',
@@ -105,12 +112,13 @@
                     datasets: [{
                         label: "Trolley 1",
                         
-                        data: CHARTDATA
+                        data: chart1
+
                     },
                     {
                         label: "Trolley 2",
                         
-                        data: CHARTDATA
+                        data: chart2
                     }
                     ]
                 },
@@ -144,3 +152,4 @@
         
     </body>
 </html>
+
