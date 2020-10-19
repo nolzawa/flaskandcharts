@@ -40,6 +40,7 @@ def trolley_create():
         return "Thank you for submitting"
     return render_template("form.html")
 
+
 @app.route("/trolley")
 def trolley_read():
     return render_template("trolley.html", dlist=repo.f_date())
@@ -50,10 +51,27 @@ def temp_view():
 
 @app.route("/dashboard")
 def dashboard_view():
-    return render_template("dashboard.html", total=repo.count_all(), cactive = repo.count_active(), xlabel=repo.f_date(), highestTemp=repo.get_high(), lowestTemp=repo.get_low())
+    t1_list = []
+    t2_list = []
+
+    dd = datetime.strptime('2020-08-11', '%Y-%m-%d')
+    for i in repo.f_date():
+        if i['name'] == 'trolley1':
+            t1_list.append(i['temp'])
+        if i['name'] == 'trolley2':
+            t2_list.append(i['temp'])
+
+
+
+    #print(t1_list)
+    #print(t2_list)
+
+
+    return render_template("dashboard.html", t1=t1_list, t2=t2_list, total=repo.count_all(), cactive = repo.count_active(), xlabel=repo.f_date(dd), highestTemp=repo.get_high(), lowestTemp=repo.get_low())
 
 #DateObj = datetime.strptime(date_string, "%Y-%m-%d") to convert into dateobj
 #to plug in the data and labels, pull out all the data into a string and plug into the chart
+
 
 if __name__ == "main":
     app.run()
